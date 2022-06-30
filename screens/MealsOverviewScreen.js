@@ -1,11 +1,11 @@
-import { View, FlatList, StyleSheet } from "react-native";
 import { useLayoutEffect } from "react";
+import { View, FlatList, StyleSheet } from "react-native";
 
 import MealItem from "../components/MealItem";
-import { CATEGORIES, MEALS } from "../data/dummy-data";
+import { MEALS, CATEGORIES } from "../data/dummy-data";
 
 function MealsOverviewScreen({ route, navigation }) {
-  //  https://reactnavigation.org/docs/navigation-prop/
+    //  https://reactnavigation.org/docs/navigation-prop/
   const catId = route.params.categoryId; // "categoryId" is the name of the parameter in the navigation object
 
   const displayedMeals = MEALS.filter((mealItem) => {

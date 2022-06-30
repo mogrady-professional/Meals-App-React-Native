@@ -1,12 +1,11 @@
 {
     "expo": {
-        "name": "RNNavigation",
-        "slug": "RNNavigation",
+        "name": "RNCourse",
+        "slug": "RNCourse",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
-        "backgroundColor": "#23180f",
-        "userInterfaceStyle": "light",
+        "backgroundColor": "#24180f",
         "splash": {
             "image": "./assets/splash.png",
             "resizeMode": "contain",
@@ -15,7 +14,9 @@
         "updates": {
             "fallbackToCacheTimeout": 0
         },
-        "assetBundlePatterns": ["**/*"],
+        "assetBundlePatterns": [
+            "**/*"
+        ],
         "ios": {
             "supportsTablet": true
         },
