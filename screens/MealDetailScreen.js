@@ -1,35 +1,42 @@
 import { useContext, useLayoutEffect } from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import IconButton from "../components/IconButton";
 import List from "../components/MealDetail/List";
 import Subtitle from "../components/MealDetail/Subtitle";
 import MealDetails from "../components/MealDetails";
 import { MEALS } from "../data/dummy-data";
-import { FavouritesContext } from "../store/context/favourites-context";
+import { addFavourite, removeFavourite } from "../store/redux/favourites";
+// import { FavouritesContext } from "../store/context/favourites-context";
 
 function MealDetailScreen({ route, navigation }) {
-  const favouriteMealsCtx = useContext(FavouritesContext);
+  // const favouriteMealsCtx = useContext(FavouritesContext);
+  const favouriteMealIds = useSelector((state) => state.favouriteMeals.ids);
+  const dispatch = useDispatch(); // to dispatch actions to the store
 
   const mealId = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   // Return true or false if the meal is in the favourites list
-  const mealIsFavourite = favouriteMealsCtx.ids.includes(mealId);
+  // const mealIsFavourite = favouriteMealsCtx.ids.includes(mealId);
+  const mealIsFavourite = favouriteMealIds.includes(mealId);
 
   function changeFavouriteStatusHandler() {
     console.log("Toggling favourite status, mealId: ", mealId);
-    console.log("favouriteMealsCtx.ids: ", favouriteMealsCtx.ids);
+    // console.log("favouriteMealsCtx.ids: ", favouriteMealsCtx.ids);
     console.log("mealIsFavourite: ", mealIsFavourite);
     if (mealIsFavourite) {
       // Remove from favourites
-      favouriteMealsCtx.removeFavourite(mealId);
+      // favouriteMealsCtx.removeFavourite(mealId);
+      dispatch(removeFavourite({ id: mealId }));
       console.log("Removed from favourites");
     } else {
       // Make the meal a favourite
-      favouriteMealsCtx.addFavourite(mealId);
-      console.log("Add to favourites");
+      // favouriteMealsCtx.addFavourite(mealId);
+      dispatch(addFavourite({ id: mealId }));
+      console.log("Added to favourites");
     }
   }
 
