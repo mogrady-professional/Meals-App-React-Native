@@ -1,19 +1,36 @@
-import { useLayoutEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useContext, useLayoutEffect } from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 
-import IconButton from '../components/IconButton';
-import List from '../components/MealDetail/List';
-import Subtitle from '../components/MealDetail/Subtitle';
-import MealDetails from '../components/MealDetails';
-import { MEALS } from '../data/dummy-data';
+import IconButton from "../components/IconButton";
+import List from "../components/MealDetail/List";
+import Subtitle from "../components/MealDetail/Subtitle";
+import MealDetails from "../components/MealDetails";
+import { MEALS } from "../data/dummy-data";
+import { FavouritesContext } from "../store/context/favourites-context";
 
 function MealDetailScreen({ route, navigation }) {
+  const favouriteMealsCtx = useContext(FavouritesContext);
+
   const mealId = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  function headerButtonPressHandler() {
-    console.log('Pressed!');
+  // Return true or false if the meal is in the favourites list
+  const mealIsFavourite = favouriteMealsCtx.ids.includes(mealId);
+
+  function changeFavouriteStatusHandler() {
+    console.log("Toggling favourite status, mealId: ", mealId);
+    console.log("favouriteMealsCtx.ids: ", favouriteMealsCtx.ids);
+    console.log("mealIsFavourite: ", mealIsFavourite);
+    if (mealIsFavourite) {
+      // Remove from favourites
+      favouriteMealsCtx.removeFavourite(mealId);
+      console.log("Removed from favourites");
+    } else {
+      // Make the meal a favourite
+      favouriteMealsCtx.addFavourite(mealId);
+      console.log("Add to favourites");
+    }
   }
 
   useLayoutEffect(() => {
@@ -21,14 +38,14 @@ function MealDetailScreen({ route, navigation }) {
       headerRight: () => {
         return (
           <IconButton
-            icon="star"
+            icon={mealIsFavourite ? "star" : "star-outline"}
             color="white"
-            onPress={headerButtonPressHandler}
+            onPress={changeFavouriteStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, changeFavouriteStatusHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -59,23 +76,23 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 350,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 24,
     margin: 8,
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
   },
   detailText: {
-    color: 'white',
+    color: "white",
   },
   listOuterContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   listContainer: {
-    width: '80%',
+    width: "80%",
   },
 });
