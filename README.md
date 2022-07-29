@@ -4,6 +4,17 @@
 
 # Table of Contents
 
+- [Meals Application — React Native](#meals-application--react-native)
+- [Table of Contents](#table-of-contents)
+- [Instructions](#instructions)
+- [Packages](#packages)
+- [Application Images](#application-images)
+- [All Meal Categories](#all-meal-categories)
+- [Quick and Easy Meals](#quick-and-easy-meals)
+- [Meal](#meal)
+- [Navigation](#navigation)
+- [Favourites](#favourites)
+
 # Instructions
 
 - Clone repo
