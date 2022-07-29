@@ -1,6 +1,6 @@
 # Meals Application — React Native
 
-> Expense tracker with static data served via JSON file to simulate a backend.
+> Meals Application with static data served via JSON file to simulate a backend.
 
 # Table of Contents
 
