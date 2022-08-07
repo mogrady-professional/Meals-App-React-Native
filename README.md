@@ -2,6 +2,10 @@
 
 > Meals Application with static data served via JSON file to simulate a backend.
 
+<p align="center" >
+ <img src="./images/meals-app.jpg"  height="auto" width="100%">
+</p>
+
 # Table of Contents
 
 - [Meals Application — React Native](#meals-application--react-native)
@@ -9,11 +13,11 @@
 - [Instructions](#instructions)
 - [Packages](#packages)
 - [Application Images](#application-images)
-- [All Meal Categories](#all-meal-categories)
+  - [All Meal Categories](#all-meal-categories)
 - [Quick and Easy Meals](#quick-and-easy-meals)
-- [Meal](#meal)
-- [Navigation](#navigation)
-- [Favourites](#favourites)
+  - [Meal](#meal)
+  - [Navigation](#navigation)
+  - [Favourites](#favourites)
 
 # Instructions
 
@@ -46,7 +50,7 @@
 
 # Application Images
 
-# All Meal Categories
+## All Meal Categories
 
 <p align="center" >
  <img src="./images/1.jpg"  height="auto" width="100%">
@@ -58,19 +62,19 @@
  <img src="./images/2.jpg"  height="auto" width="100%">
 </p>
 
-# Meal
+## Meal
 
 <p align="center" >
  <img src="./images/3.jpg"  height="auto" width="100%">
 </p>
 
-# Navigation
+## Navigation
 
 <p align="center" >
  <img src="./images/4.jpg"  height="auto" width="100%">
 </p>
 
-# Favourites
+## Favourites
 
 <p align="center" >
  <img src="./images/5.jpg"  height="auto" width="100%">
